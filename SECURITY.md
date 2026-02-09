@@ -8,7 +8,11 @@ Es gibt keine laufende Security-Garantie fuer alle Umgebungen.
 ## Responsible Disclosure
 
 Bitte melde sicherheitsrelevante Themen nicht zuerst oeffentlich im Issue-Tracker.
-Nutze stattdessen einen privaten Kanal (z. B. direkte Kontaktaufnahme mit dem Maintainer).
+Nutze stattdessen einen privaten Kanal.
+
+Kontakt fuer Security-Meldungen:
+- E-Mail: `mwiedmer@appwerkstatt.dev`
+- Referenz-Domains: `appwerkstatt.dev`, `mathiaswiedmer.de`
 
 ## Was gemeldet werden sollte
 

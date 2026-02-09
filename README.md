@@ -90,6 +90,12 @@ ssh -L 18789:127.0.0.1:18789 awadmin@<SERVER-IP> -i ~/.ssh/openclaw_strato
 Hinweise, Korrekturen und Härtungs-Ideen sind explizit erwuenscht.
 Siehe `CONTRIBUTING.md` und `SECURITY.md`.
 
+## Maintainer
+
+- Mathias Wiedmer
+- Kontakt: `mwiedmer@appwerkstatt.dev`
+- Domains: `appwerkstatt.dev`, `mathiaswiedmer.de`
+
 ## Wichtige Hinweise
 
 - Dieses Repository ist nicht offiziell von OpenClaw.
