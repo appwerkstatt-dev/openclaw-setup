@@ -4,12 +4,12 @@ max_retries = 2
 timeout = 20
 user_agent = 'openclaw-setup-link-checker'
 
-# 403 akzeptieren: OpenAI u.a. blocken automatisierte Requests
-accept = [200, 204, 301, 302, 403]
+accept = [200, 204, 301, 302]
 
 exclude = [
   '^mailto:mwiedmer@appwerkstatt.dev$',
   'SERVER-IP',
   '^http://127\\.0\\.0\\.1',
   '^https://127\\.0\\.0\\.1',
+  '^https://platform\\.openai\\.com/api-keys/?$',
 ]
