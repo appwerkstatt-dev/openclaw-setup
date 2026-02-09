@@ -10,6 +10,13 @@ Ziel ist ein robustes, nachvollziehbares Setup mit realem Praxisnutzen.
 - Skripte idempotenter machen
 - Doku klarer und fehlertoleranter machen
 
+## Issue-Workflow
+
+Bitte die passenden Templates nutzen:
+- `Bug report` fuer reproduzierbare Fehler
+- `Hardening idea` fuer Security-/Betriebsvorschlaege
+- `Docs feedback` fuer Doku-Luecken
+
 ## Bevor du einen PR oeffnest
 
 1. Fuehre `bash -n scripts/*.sh` aus.

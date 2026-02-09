@@ -1,10 +1,15 @@
 # Handoff
 
 ## Goal / DoD Status
-- Goal: Repo oeffentlichkeitsfaehig aufbereiten (Vision, Weg, Sicherheitsrahmen, Mitmachen) und als Public Repo veroeffentlichen.
-- Status: Inhaltlich erledigt; Veroeffentlichung blockiert durch ungueltiges `gh` Login.
+- Goal: Repo oeffentlichkeitsfaehig aufbereiten (Vision, Weg, Sicherheitsrahmen, Mitmachen), public veroeffentlichen und Community-Feedback erleichtern.
+- Status: Erreicht. Repo ist public, Templates und Topics sind aktiv.
 
 ## Files touched
+- .github/ISSUE_TEMPLATE/bug_report.yml
+- .github/ISSUE_TEMPLATE/config.yml
+- .github/ISSUE_TEMPLATE/docs_feedback.yml
+- .github/ISSUE_TEMPLATE/hardening_idea.yml
+- .github/pull_request_template.md
 - .gitignore
 - CONTRIBUTING.md
 - HANDOFF.md
@@ -22,7 +27,8 @@
 
 ## Tests run
 - `bash -n scripts/*.sh` (PASS)
+- `gh repo view appwerkstatt-dev/openclaw-setup --json name,url,visibility,repositoryTopics` (PASS)
 
 ## Open risks / decisions
 - OpenClaw-Version bleibt bewusst verpflichtend via `OPENCLAW_VERSION` (Pinning).
-- Fuer GitHub-Push ist einmal `gh auth login -h github.com` noetig (aktueller Token ungueltig).
+- Security-Meldungen laufen bewusst per privatem Kanal (`mwiedmer@appwerkstatt.dev`) statt oeffentlichem Issue.

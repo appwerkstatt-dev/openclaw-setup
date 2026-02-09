@@ -1,0 +1,55 @@
+name: Bug report
+description: Melde ein reproduzierbares Problem im Setup oder in der Doku.
+title: "bug: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Danke fuer den Report. Bitte so konkret wie moeglich ausfuellen.
+  - type: input
+    id: environment
+    attributes:
+      label: Umgebung
+      description: OS/Version und VPS-Anbieter
+      placeholder: Ubuntu 24.04 auf Strato VC 2-4
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Schritte zum Reproduzieren
+      description: Welche Befehle wurden in welcher Reihenfolge ausgefuehrt?
+      placeholder: |
+        1. sudo bash scripts/01-bootstrap.sh
+        2. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Erwartetes Verhalten
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Tatsaechliches Verhalten
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevante Logs/Output
+      description: Keine Secrets posten.
+      render: shell
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Vorher geprueft
+      options:
+        - label: Ich habe `scripts/99-checklist.sh` ausgefuehrt.
+          required: false
+        - label: Ich habe Secrets aus Log-Ausgaben entfernt.
+          required: true

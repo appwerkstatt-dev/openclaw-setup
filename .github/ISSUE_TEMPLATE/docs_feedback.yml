@@ -1,0 +1,23 @@
+name: Docs feedback
+description: Unklarheiten, fehlende Schritte oder Verbesserungsvorschlaege zur Doku.
+title: "docs: "
+labels:
+  - documentation
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Betroffene Datei/Abschnitt
+      placeholder: README.md -> Quickstart
+    validations:
+      required: true
+  - type: textarea
+    id: unclear
+    attributes:
+      label: Was ist unklar oder fehlt?
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Verbesserungsvorschlag

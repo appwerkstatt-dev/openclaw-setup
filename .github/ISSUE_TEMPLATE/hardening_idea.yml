@@ -1,0 +1,30 @@
+name: Hardening idea
+description: Vorschlag fuer Security-/Betriebsverbesserung.
+title: "hardening: "
+labels:
+  - enhancement
+  - security
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Welches Risiko oder welche Schwachstelle wird adressiert?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Vorschlag
+      description: Konkrete Aenderung inkl. Trade-offs.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Auswirkungen
+      description: Kompatibilitaet, Bedienbarkeit, Betriebsaufwand.
+  - type: textarea
+    id: references
+    attributes:
+      label: Referenzen
+      description: Links zu Doku, CVEs, Benchmarks etc.

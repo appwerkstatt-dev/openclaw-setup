@@ -89,6 +89,10 @@ ssh -L 18789:127.0.0.1:18789 awadmin@<SERVER-IP> -i ~/.ssh/openclaw_strato
 
 Hinweise, Korrekturen und Härtungs-Ideen sind explizit erwuenscht.
 Siehe `CONTRIBUTING.md` und `SECURITY.md`.
+Fuer strukturierte Rueckmeldungen nutze bitte die Issue-Templates:
+- `Bug report`
+- `Hardening idea`
+- `Docs feedback`
 
 ## Maintainer
 
