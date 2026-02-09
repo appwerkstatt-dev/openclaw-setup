@@ -7,6 +7,7 @@ Praxisnahes, gehaertetes Setup fuer OpenClaw auf einem kleinen VPS.
 Ein reproduzierbarer Einstieg, der nicht bei "laeuft irgendwie" aufhoert, sondern Security, Betrieb und Wartbarkeit von Anfang an mitdenkt.
 
 Dieses Repository soll:
+
 - eine sichere Basis fuer Einzelpersonen und kleine Teams liefern,
 - typische Fehlkonfigurationen (offene Ports, schwache SSH-Defaults, unklare Secrets) vermeiden,
 - konkrete Verbesserungsvorschlaege aus der Community aufnehmen.
@@ -90,6 +91,7 @@ ssh -L 18789:127.0.0.1:18789 awadmin@<SERVER-IP> -i ~/.ssh/openclaw_strato
 Hinweise, Korrekturen und Härtungs-Ideen sind explizit erwuenscht.
 Siehe `CONTRIBUTING.md` und `SECURITY.md`.
 Fuer strukturierte Rueckmeldungen nutze bitte die Issue-Templates:
+
 - `Bug report`
 - `Hardening idea`
 - `Docs feedback`
@@ -97,6 +99,7 @@ Fuer strukturierte Rueckmeldungen nutze bitte die Issue-Templates:
 ## Automatische Qualitaetschecks
 
 Bei jedem Push/PR laufen in GitHub Actions:
+
 - `shellcheck` fuer `scripts/*.sh`
 - Markdown-Lint fuer `*.md`
 - Link-Check fuer Doku-Links
@@ -114,6 +117,6 @@ Bei jedem Push/PR laufen in GitHub Actions:
 
 ## Quellen
 
-- OpenClaw Docs: https://docs.openclaw.ai/
-- Security Guide: https://docs.openclaw.ai/gateway/security
-- Getting Started: https://docs.openclaw.ai/start/getting-started
+- OpenClaw Docs: <https://docs.openclaw.ai/>
+- Security Guide: <https://docs.openclaw.ai/gateway/security>
+- Getting Started: <https://docs.openclaw.ai/start/getting-started>

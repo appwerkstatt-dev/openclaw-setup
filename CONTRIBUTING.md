@@ -13,6 +13,7 @@ Ziel ist ein robustes, nachvollziehbares Setup mit realem Praxisnutzen.
 ## Issue-Workflow
 
 Bitte die passenden Templates nutzen:
+
 - `Bug report` fuer reproduzierbare Fehler
 - `Hardening idea` fuer Security-/Betriebsvorschlaege
 - `Docs feedback` fuer Doku-Luecken
@@ -33,6 +34,7 @@ Bitte die passenden Templates nutzen:
 ## Commit-Stil
 
 Empfohlen:
+
 - `feat(scope): ...`
 - `fix(scope): ...`
 - `docs(scope): ...`
