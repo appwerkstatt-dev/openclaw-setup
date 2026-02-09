@@ -52,3 +52,32 @@ sudo bash scripts/99-checklist.sh
 sudo systemctl restart openclaw
 sudo bash scripts/04-telegram-setup.sh
 ```
+
+## CI Ownership (GitHub Actions)
+
+- Owner: Repository-Maintainer (`mwiedmer@appwerkstatt.dev`)
+- Policy: `main` nur per Pull Request, nur mit gruener CI
+- Required checks:
+  - `Shellcheck`
+  - `Markdown Lint`
+  - `Link Check`
+
+## CI Failure Triage
+
+1. Fehlerhaften Job im PR oeffnen (`Actions` Tab).
+2. Ursache zuordnen:
+   - `Shellcheck`: Shell-Fehler/Unsicherheiten in `scripts/*.sh`
+   - `Markdown Lint`: Formatprobleme in `*.md`
+   - `Link Check`: Defekte/instabile Links in Doku
+3. Fix committen und in denselben PR pushen.
+4. Merge erst nach erneut gruener CI.
+
+## Wenn Link-Check flaked
+
+Externe Seiten koennen zeitweise ausfallen/rate-limiten.
+Wenn ein Link stabil korrekt ist, aber CI sporadisch rot:
+
+1. PR einmal neu ausfuehren (`Re-run failed jobs`).
+2. Bei wiederholtem Flake:
+   - Link pruefen und ggf. ersetzen
+   - oder gezielt in `.lychee.toml` exkludieren (mit Begruendung im PR)
