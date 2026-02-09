@@ -1,10 +1,12 @@
 # Handoff
 
 ## Goal / DoD Status
+
 - Goal: Repo oeffentlichkeitsfaehig aufbereiten (Vision, Weg, Sicherheitsrahmen, Mitmachen), public veroeffentlichen und Community-Feedback erleichtern.
 - Status: Erreicht. Repo ist public, Templates/Topics sind aktiv und CI-Qualitaetsgates sind hinzugefuegt.
 
 ## Files touched
+
 - .github/ISSUE_TEMPLATE/bug_report.yml
 - .github/ISSUE_TEMPLATE/config.yml
 - .github/ISSUE_TEMPLATE/docs_feedback.yml
@@ -29,10 +31,12 @@
 - scripts/99-checklist.sh
 
 ## Tests run
+
 - `bash -n scripts/*.sh` (PASS)
 - `gh repo view appwerkstatt-dev/openclaw-setup --json name,url,visibility,repositoryTopics` (PASS)
 
 ## Open risks / decisions
+
 - OpenClaw-Version bleibt bewusst verpflichtend via `OPENCLAW_VERSION` (Pinning).
 - Security-Meldungen laufen bewusst per privatem Kanal (`mwiedmer@appwerkstatt.dev`) statt oeffentlichem Issue.
 - Link-Check kann bei externen Drittseiten gelegentlich flaken (Timeout/Rate-Limit); aktuelle Konfiguration reduziert False Positives.

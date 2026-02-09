@@ -87,7 +87,7 @@ echo ""
 echo "  Oeffne jetzt Telegram und sende /start an @$BOT_USERNAME"
 echo "  Der Bot sollte dir einen Pairing-Code senden."
 echo ""
-read -p "  Pairing-Code eingeben (oder Enter zum Ueberspringen): " PAIRING_CODE
+read -rp "  Pairing-Code eingeben (oder Enter zum Ueberspringen): " PAIRING_CODE
 
 if [ -n "$PAIRING_CODE" ]; then
   echo "  Pairing bestaetigen..."

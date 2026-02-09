@@ -27,12 +27,14 @@ Den Public Key (`~/.ssh/openclaw_strato.pub`) brauchst du beim Strato-Server-Set
 ### 4. LLM API-Key erstellen
 
 **Anthropic (Claude):**
-- https://console.anthropic.com/ -> API Keys -> Create Key
+
+- <https://console.anthropic.com/> -> API Keys -> Create Key
 - Spending Limit setzen (z.B. 10 USD/Monat fuer Tests)
 - Key beginnt mit `sk-ant-api03-...`
 
 **OpenAI (optional):**
-- https://platform.openai.com/api-keys -> Create new secret key
+
+- <https://platform.openai.com/api-keys> -> Create new secret key
 - Usage Limit setzen
 - Key beginnt mit `sk-...`
 

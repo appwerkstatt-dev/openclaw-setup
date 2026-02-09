@@ -11,6 +11,7 @@ Bitte melde sicherheitsrelevante Themen nicht zuerst oeffentlich im Issue-Tracke
 Nutze stattdessen einen privaten Kanal.
 
 Kontakt fuer Security-Meldungen:
+
 - E-Mail: `mwiedmer@appwerkstatt.dev`
 - Referenz-Domains: `appwerkstatt.dev`, `mathiaswiedmer.de`
 
