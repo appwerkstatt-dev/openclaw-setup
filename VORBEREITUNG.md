@@ -91,12 +91,87 @@ Das reicht fuer OpenClaw locker aus (Node.js + Gateway + Telegram-Bot).
 
 ---
 
+## Manuelle Schritte auf dem Server (VNC-Konsole, BEVOR Scripts laufen)
+
+**WICHTIG:** Diese Schritte muessen MANUELL ueber die Strato VNC-Konsole
+oder ein lokales Terminal (als root) ausgefuehrt werden. Kein Script, kein
+LLM, keine Fernsteuerung -- du gibst die Passwoerter selbst ein.
+
+### Schritt 1: Admin-User anlegen
+
+```bash
+# Als root auf dem Server (VNC-Konsole):
+adduser awadmin
+# -> Passwort eingeben (interaktiv, wird NICHT angezeigt)
+
+usermod -aG sudo awadmin
+```
+
+### Schritt 2: SSH-Key fuer awadmin einrichten
+
+```bash
+# Als root auf dem Server:
+mkdir -p /home/awadmin/.ssh
+chmod 700 /home/awadmin/.ssh
+
+# Public Key eintragen (aus ~/.ssh/openclaw_strato.pub auf deinem Rechner):
+nano /home/awadmin/.ssh/authorized_keys
+# -> Inhalt von openclaw_strato.pub einfuegen, speichern
+
+chmod 600 /home/awadmin/.ssh/authorized_keys
+chown -R awadmin:awadmin /home/awadmin/.ssh
+```
+
+### Schritt 3: SSH-Verbindung testen (von deinem Rechner)
+
+```bash
+ssh openclaw-admin
+# Sollte ohne Passwort-Abfrage verbinden
+```
+
+### Schritt 4: Scripts ausfuehren
+
+Erst jetzt koennen die automatisierten Scripts laufen:
+
+```bash
+# Als awadmin auf dem Server:
+sudo bash 01-bootstrap.sh
+```
+
+---
+
 ## Nach Server-Zugang: Reihenfolge
 
-1. `01-bootstrap.sh`  -- OS haerten, Firewall, SSH, Admin-User
-2. `02-install-openclaw.sh` -- Node.js, OpenClaw, System-User, Config
-3. `03-systemd-setup.sh` -- Service, Env-File, Autostart
-4. `04-telegram-setup.sh` -- Telegram konfigurieren und testen
-5. `99-checklist.sh` -- Alles pruefen
+<!-- markdownlint-disable MD029 -->
+
+1. **Manuell (VNC):** User `awadmin` anlegen, Passwort setzen, SSH-Key
+2. `01-bootstrap.sh`  -- OS haerten, Firewall, SSH (Root-Login sperren)
+3. `02-install-openclaw.sh` -- Node.js, OpenClaw, System-User, Config, Gateway-Token
+4. `03-systemd-setup.sh` -- Service, Env-File Template, Autostart
+5. **Manuell (SSH):** Secrets eintragen: `sudo nano /etc/openclaw/openclaw.env`
+6. `04-telegram-setup.sh` -- Telegram konfigurieren und testen
+7. `99-checklist.sh` -- Alles pruefen
+
+<!-- markdownlint-enable MD029 -->
 
 Jedes Script wird einzeln ausgefuehrt, damit du jeden Schritt kontrollieren kannst.
+
+---
+
+## Secrets eintragen (nach Script 03, per SSH)
+
+Nach `03-systemd-setup.sh` existiert die Datei `/etc/openclaw/openclaw.env`
+mit Platzhaltern. Das Gateway-Token ist bereits automatisch generiert (von
+Script 02). Die restlichen Secrets musst du manuell eintragen:
+
+```bash
+sudo nano /etc/openclaw/openclaw.env
+```
+
+Folgende Werte eintragen (aus deiner lokalen `secrets.env`):
+
+- `TELEGRAM_BOT_TOKEN` -- Bot-Token vom BotFather
+- `ANTHROPIC_API_KEY` -- Dein Anthropic API Key
+- `OPENAI_API_KEY` -- Optional, dein OpenAI API Key
+
+**Danach:** Service starten und Telegram-Setup ausfuehren.

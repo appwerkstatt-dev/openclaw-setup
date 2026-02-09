@@ -54,29 +54,31 @@ Dieses Repository soll:
 ## Quickstart
 
 1. Vorbereitung lesen: `VORBEREITUNG.md`
-2. Skripte in Reihenfolge ausfuehren:
+2. User `awadmin` manuell anlegen (VNC-Konsole, siehe `VORBEREITUNG.md`)
+3. Skripte in Reihenfolge ausfuehren:
    `01-bootstrap.sh` -> `02-install-openclaw.sh` -> `03-systemd-setup.sh` -> `04-telegram-setup.sh` -> `99-checklist.sh`
-3. Betrieb und Notfaelle: `RUNBOOK.md`
+4. Betrieb und Notfaelle: `RUNBOOK.md`
 
 ## Lokaler Ablauf (Beispiel)
 
 ```bash
+# 0) MANUELL: awadmin anlegen, SSH-Key einrichten (siehe VORBEREITUNG.md)
+
 # 1) Scripts auf Server kopieren
-scp scripts/*.sh root@<SERVER-IP>:/root/
+scp scripts/*.sh awadmin@<SERVER-IP>:~/
 
-# 2) Bootstrap als root
-ssh root@<SERVER-IP> -i ~/.ssh/openclaw_strato
-bash /root/01-bootstrap.sh
-
-# 3) Installation als awadmin mit Version-Pinning
+# 2) Als awadmin einloggen
 ssh awadmin@<SERVER-IP> -i ~/.ssh/openclaw_strato
+
+# 3) Scripts ausfuehren
+sudo bash ~/01-bootstrap.sh
 export OPENCLAW_VERSION=<EXAKTE_VERSION>
-sudo -E bash /root/02-install-openclaw.sh
-sudo bash /root/03-systemd-setup.sh
-sudo nano /etc/openclaw/openclaw.env
+sudo -E bash ~/02-install-openclaw.sh
+sudo bash ~/03-systemd-setup.sh
+sudo nano /etc/openclaw/openclaw.env    # Secrets eintragen
 sudo systemctl enable --now openclaw
-sudo bash /root/04-telegram-setup.sh
-sudo bash /root/99-checklist.sh
+sudo bash ~/04-telegram-setup.sh
+sudo bash ~/99-checklist.sh
 ```
 
 ## Web-UI Zugriff
