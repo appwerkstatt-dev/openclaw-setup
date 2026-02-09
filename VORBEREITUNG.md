@@ -67,7 +67,7 @@ Lege vorab fest, welche OpenClaw-Version installiert werden soll
 
 ```bash
 export OPENCLAW_VERSION=<EXAKTE_VERSION>
-sudo -E bash 02-install-openclaw.sh
+sudo OPENCLAW_VERSION="$OPENCLAW_VERSION" bash 02-install-openclaw.sh
 ```
 
 ---
@@ -125,7 +125,7 @@ chown -R awadmin:awadmin /home/awadmin/.ssh
 ### Schritt 3: SSH-Verbindung testen (von deinem Rechner)
 
 ```bash
-ssh openclaw-admin
+ssh awadmin@<SERVER-IP> -i ~/.ssh/openclaw_strato
 # Sollte ohne Passwort-Abfrage verbinden
 ```
 

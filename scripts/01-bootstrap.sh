@@ -38,7 +38,10 @@ fi
 
 if [ ! -f "/home/$ADMIN_USER/.ssh/authorized_keys" ]; then
   echo "FEHLER: Kein SSH-Key fuer '$ADMIN_USER' gefunden."
-  echo "  -> Als root: cp -r /root/.ssh /home/$ADMIN_USER/ && chown -R $ADMIN_USER:$ADMIN_USER /home/$ADMIN_USER/.ssh"
+  echo "  -> Als root: install -d -m 700 /home/$ADMIN_USER/.ssh"
+  echo "            cp /root/.ssh/authorized_keys /home/$ADMIN_USER/.ssh/authorized_keys"
+  echo "            chown -R $ADMIN_USER:$ADMIN_USER /home/$ADMIN_USER/.ssh"
+  echo "            chmod 600 /home/$ADMIN_USER/.ssh/authorized_keys"
   exit 1
 fi
 

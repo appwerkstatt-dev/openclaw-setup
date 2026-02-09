@@ -73,7 +73,7 @@ ssh awadmin@<SERVER-IP> -i ~/.ssh/openclaw_strato
 # 3) Scripts ausfuehren
 sudo bash ~/01-bootstrap.sh
 export OPENCLAW_VERSION=<EXAKTE_VERSION>
-sudo -E bash ~/02-install-openclaw.sh
+sudo OPENCLAW_VERSION="$OPENCLAW_VERSION" bash ~/02-install-openclaw.sh
 sudo bash ~/03-systemd-setup.sh
 sudo nano /etc/openclaw/openclaw.env    # Secrets eintragen
 sudo systemctl enable --now openclaw
