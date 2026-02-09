@@ -4,7 +4,7 @@
 # =============================================================================
 # Ausfuehren als awadmin:
 #   export OPENCLAW_VERSION=<VERSION>
-#   sudo -E bash 02-install-openclaw.sh
+#   sudo OPENCLAW_VERSION="$OPENCLAW_VERSION" bash 02-install-openclaw.sh
 # =============================================================================
 set -euo pipefail
 

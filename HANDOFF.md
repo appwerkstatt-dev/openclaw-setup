@@ -3,7 +3,7 @@
 ## Goal / DoD Status
 
 - Goal: Repo oeffentlichkeitsfaehig aufbereiten (Vision, Weg, Sicherheitsrahmen, Mitmachen), public veroeffentlichen und Community-Feedback erleichtern.
-- Status: Erreicht. Repo ist public, Templates/Topics sind aktiv, CI-Qualitaetsgates und Branch-Protection sind aktiv.
+- Status: Erreicht. Zusaetzlich Security-Feinschliff: kein `cp -r /root/.ssh`-Hinweis mehr, kein `sudo -E` im Setup-Flow.
 
 ## Files touched
 
@@ -40,5 +40,5 @@
 
 - OpenClaw-Version bleibt bewusst verpflichtend via `OPENCLAW_VERSION` (Pinning).
 - Security-Meldungen laufen bewusst per privatem Kanal (`mwiedmer@appwerkstatt.dev`) statt oeffentlichem Issue.
-- Link-Check kann bei externen Drittseiten gelegentlich flaken (Timeout/Rate-Limit); aktuelle Konfiguration reduziert False Positives.
+- Link-Check bleibt strikt; bekannte 403-URL wird gezielt exkludiert statt globaler 403-Akzeptanz.
 - `main` ist nun geschuetzt: Merge nur per PR mit 1 Approval und gruener CI.
