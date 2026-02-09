@@ -9,4 +9,6 @@ exclude = [
   'SERVER-IP',
   '^http://127\\.0\\.0\\.1',
   '^https://127\\.0\\.0\\.1',
+  # OpenAI blockt automatisierte Requests mit 403
+  '^https://platform\\.openai\\.com',
 ]
