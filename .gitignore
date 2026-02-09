@@ -1,0 +1,11 @@
+# Local/editor
+.DS_Store
+*.swp
+*.swo
+
+# Secrets
+.env
+*.env.local
+
+# Runtime artifacts
+*.log
