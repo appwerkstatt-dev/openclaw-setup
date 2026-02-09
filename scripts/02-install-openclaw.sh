@@ -3,7 +3,8 @@
 # 02-install-openclaw.sh -- OpenClaw Installation + Hardening
 # =============================================================================
 # Ausfuehren als awadmin:
-#   sudo bash 02-install-openclaw.sh
+#   export OPENCLAW_VERSION=<VERSION>
+#   sudo -E bash 02-install-openclaw.sh
 # =============================================================================
 set -euo pipefail
 
@@ -12,7 +13,7 @@ echo ""
 
 # --- Root-Check ---
 if [ "${EUID:-$(id -u)}" -ne 0 ]; then
-  echo "FEHLER: Bitte mit sudo/root ausfuehren."
+  echo "FEHLER: Bitte mit sudo ausfuehren."
   exit 1
 fi
 
@@ -54,7 +55,6 @@ else
   echo "  -> User '$OC_USER' existiert bereits"
 fi
 
-# Verzeichnisse
 mkdir -p "$OC_HOME"/{state,workspace}
 mkdir -p "$OC_CONFIG_DIR"
 chown -R "$OC_USER:$OC_USER" "$OC_HOME"
@@ -63,26 +63,27 @@ chmod 700 "$OC_HOME"
 # --- 3. OpenClaw installieren ---
 echo "[3/5] OpenClaw installieren..."
 npm install -g "openclaw@$OPENCLAW_VERSION"
-echo "  -> OpenClaw $(openclaw --version 2>/dev/null || echo 'installiert')"
+echo "  -> OpenClaw $(openclaw --version 2>/dev/null || echo "$OPENCLAW_VERSION") installiert"
 
-# --- 4. Gateway-Token generieren ---
-echo "[4/5] Gateway-Token in Env-Datei hinterlegen..."
-mkdir -p "$OC_CONFIG_DIR"
+# --- 4. Gateway-Token ---
+echo "[4/5] Gateway-Token pruefen..."
 touch "$OC_ENV_FILE"
 chmod 600 "$OC_ENV_FILE"
 chown root:root "$OC_ENV_FILE"
 
-CURRENT_TOKEN=$(grep -E '^OPENCLAW_GATEWAY_TOKEN=' "$OC_ENV_FILE" | tail -n1 | cut -d= -f2- || true)
-if [ -n "$CURRENT_TOKEN" ] && [ "$CURRENT_TOKEN" != "__HIER_GATEWAY_TOKEN_EINTRAGEN__" ]; then
+CURRENT_TOKEN=$(grep -E '^OPENCLAW_GATEWAY_TOKEN=' "$OC_ENV_FILE" 2>/dev/null | tail -n1 | cut -d= -f2- || true)
+if [ -n "$CURRENT_TOKEN" ] && [[ "$CURRENT_TOKEN" != __* ]]; then
   echo "  -> Vorhandenes Gateway-Token wird beibehalten"
 else
+  # Token generieren und direkt in Datei schreiben, NICHT ausgeben
   GATEWAY_TOKEN=$(openssl rand -hex 32)
-  if grep -qE '^OPENCLAW_GATEWAY_TOKEN=' "$OC_ENV_FILE"; then
+  if grep -qE '^OPENCLAW_GATEWAY_TOKEN=' "$OC_ENV_FILE" 2>/dev/null; then
     sed -i "s|^OPENCLAW_GATEWAY_TOKEN=.*|OPENCLAW_GATEWAY_TOKEN=$GATEWAY_TOKEN|" "$OC_ENV_FILE"
   else
     echo "OPENCLAW_GATEWAY_TOKEN=$GATEWAY_TOKEN" >> "$OC_ENV_FILE"
   fi
-  echo "  -> Neues Gateway-Token gesetzt in $OC_ENV_FILE"
+  unset GATEWAY_TOKEN
+  echo "  -> Gateway-Token generiert und in $OC_ENV_FILE gespeichert"
 fi
 
 # --- 5. OpenClaw Config ---
@@ -132,6 +133,5 @@ echo "  OpenClaw Installation abgeschlossen!"
 echo "========================================="
 echo ""
 echo "OpenClaw-Version: $OPENCLAW_VERSION"
-echo "Gateway-Token liegt in: $OC_ENV_FILE"
-echo "Naechster Schritt: 03-systemd-setup.sh"
+echo "Naechster Schritt: sudo bash 03-systemd-setup.sh"
 echo ""
