@@ -1,0 +1,12 @@
+exclude_all_private = true
+max_redirects = 5
+max_retries = 2
+timeout = 20
+user_agent = 'openclaw-setup-link-checker'
+
+exclude = [
+  '^mailto:mwiedmer@appwerkstatt.dev$',
+  'SERVER-IP',
+  '^http://127\\.0\\.0\\.1',
+  '^https://127\\.0\\.0\\.1',
+]

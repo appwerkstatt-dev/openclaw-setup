@@ -94,6 +94,13 @@ Fuer strukturierte Rueckmeldungen nutze bitte die Issue-Templates:
 - `Hardening idea`
 - `Docs feedback`
 
+## Automatische Qualitaetschecks
+
+Bei jedem Push/PR laufen in GitHub Actions:
+- `shellcheck` fuer `scripts/*.sh`
+- Markdown-Lint fuer `*.md`
+- Link-Check fuer Doku-Links
+
 ## Maintainer
 
 - Mathias Wiedmer
