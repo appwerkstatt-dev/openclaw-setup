@@ -40,5 +40,5 @@
 
 - OpenClaw-Version bleibt bewusst verpflichtend via `OPENCLAW_VERSION` (Pinning).
 - Security-Meldungen laufen bewusst per privatem Kanal (`mwiedmer@appwerkstatt.dev`) statt oeffentlichem Issue.
-- Link-Check kann bei externen Drittseiten gelegentlich flaken (Timeout/Rate-Limit); aktuelle Konfiguration reduziert False Positives.
+- Link-Check bleibt strikt (kein global `403`); bekannte Anti-Bot-URL ist gezielt exkludiert.
 - `main` ist nun geschuetzt: Merge nur per PR mit 1 Approval und gruener CI.
